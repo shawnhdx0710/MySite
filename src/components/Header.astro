@@ -1,6 +1,4 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
-
 const nav = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
@@ -10,25 +8,24 @@ const nav = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="border-b border-gray-200 dark:border-gray-800">
-  <nav class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="text-lg font-semibold tracking-tight hover:opacity-70 transition-opacity">
+<header class="border-b border-gray-200/60 bg-cream/80 backdrop-blur-sm sticky top-0 z-10">
+  <nav class="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-serif text-xl font-semibold tracking-tight hover:opacity-70 transition-opacity">
       Shawn Han
     </a>
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-8">
       {nav.map(({ href, label }) => (
         <a
           href={href}
-          class={`text-sm transition-colors hover:text-gray-900 dark:hover:text-white ${
+          class={`text-sm tracking-wide uppercase transition-colors hover:text-ink ${
             currentPath === href
-              ? 'text-gray-900 dark:text-white font-medium'
-              : 'text-gray-500 dark:text-gray-400'
+              ? 'text-ink font-medium'
+              : 'text-soft-ink'
           }`}
         >
           {label}
         </a>
       ))}
-      <ThemeToggle />
     </div>
   </nav>
 </header>

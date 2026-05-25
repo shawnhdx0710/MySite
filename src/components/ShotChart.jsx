@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 const WIDTH = 500;
 const HEIGHT = 470;
 
-// Synthetic NBA shot data — made/missed 3-pointers
 const shots = [
   { x: 80, y: 210, made: true },
   { x: 420, y: 210, made: true },
@@ -26,24 +25,20 @@ function drawCourt(ctx) {
   const w = WIDTH;
   const h = HEIGHT;
 
-  // Floor
-  ctx.fillStyle = '#f5f0eb';
+  ctx.fillStyle = '#faf9f7';
   ctx.fillRect(0, 0, w, h);
 
-  // Three-point arc
   ctx.strokeStyle = '#333';
   ctx.lineWidth = 2;
   ctx.beginPath();
   ctx.arc(w / 2, h - 60, 230, Math.PI, 0);
   ctx.stroke();
 
-  // Key
   ctx.strokeRect(w / 2 - 60, h - 200, 120, 140);
   ctx.beginPath();
   ctx.arc(w / 2, h - 60, 60, Math.PI, 0);
   ctx.stroke();
 
-  // Hoop
   ctx.beginPath();
   ctx.arc(w / 2, h - 60, 7, 0, 2 * Math.PI);
   ctx.strokeStyle = '#e74c3c';
@@ -57,7 +52,7 @@ function drawShots(ctx) {
     ctx.arc(shot.x, shot.y, 4, 0, 2 * Math.PI);
     ctx.fillStyle = shot.made ? '#2ecc71' : '#e74c3c';
     ctx.fill();
-    ctx.strokeStyle = 'rgba(0,0,0,0.15)';
+    ctx.strokeStyle = 'rgba(0,0,0,0.1)';
     ctx.lineWidth = 1;
     ctx.stroke();
   }
@@ -80,9 +75,9 @@ export default function ShotChart() {
         ref={ref}
         width={WIDTH}
         height={HEIGHT}
-        className="rounded-lg border border-gray-200 dark:border-gray-700 w-full max-w-[500px] h-auto"
+        className="rounded-lg border border-gray-200 w-full max-w-[500px] h-auto"
       />
-      <div className="flex gap-4 mt-3 text-sm text-gray-500 dark:text-gray-400">
+      <div className="flex gap-4 mt-3 text-sm text-soft-ink">
         <span className="flex items-center gap-1">
           <span className="inline-block w-3 h-3 rounded-full bg-[#2ecc71]" />
           Made

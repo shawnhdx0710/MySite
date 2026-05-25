@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1117"/>
+      <stop offset="100%" style="stop-color:#1a2744"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  <circle cx="200" cy="300" r="120" fill="none" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="600" cy="200" r="80" fill="none" stroke="#d97706" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="1000" cy="400" r="100" fill="none" stroke="#2563eb" stroke-width="1.5" opacity="0.2"/>
+  <line x1="300" y1="250" x2="500" y2="200" stroke="#e8e6e3" stroke-width="0.5" opacity="0.15"/>
+  <line x1="700" y1="300" x2="950" y2="250" stroke="#e8e6e3" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="450" cy="180" r="3" fill="#2563eb" opacity="0.6"/>
+  <circle cx="750" cy="350" r="4" fill="#d97706" opacity="0.5"/>
+  <circle cx="350" cy="400" r="2.5" fill="#2563eb" opacity="0.4"/>
+  <circle cx="850" cy="150" r="3.5" fill="#d97706" opacity="0.5"/>
+  <text x="600" y="320" text-anchor="middle" font-family="serif" font-size="42" fill="#e8e6e3" font-weight="600" letter-spacing="-0.5">NBA Shot Chart</text>
+  <text x="600" y="365" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#888" font-weight="400">Interactive sports analytics with React &amp; Canvas</text>
+</svg>

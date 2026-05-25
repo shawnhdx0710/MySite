@@ -2,17 +2,40 @@
 title: Building an NBA Shot Chart
 description: Interactive visualization of shot locations using React and Canvas, embedded directly in an MDX blog post.
 date: 2026-05-20
+coverImage: ./cover.svg
+tags: ['React', 'NBA', 'Visualization']
 ---
 
 import ShotChart from '../../components/ShotChart.jsx';
+import AudioPlayer from '../../components/AudioPlayer.jsx';
+import VideoPlayer from '../../components/VideoPlayer.jsx';
 
-I built a small interactive shot chart to explore player shooting patterns. The chart renders on a `<canvas>` element inside a React component — and because this site uses MDX, I can embed it directly in this blog post.
+I built an interactive shot chart to explore player shooting patterns. The chart renders on a `<canvas>` element inside a React component — and because this site uses MDX, I can embed it directly in this blog post.
 
 ## How it works
 
 Each dot represents a shot attempt. Green dots are makes, red are misses. The data is synthetic for now, but swapping in real NBA shot-location data from the NBA stats API is straightforward.
 
 <ShotChart client:load />
+
+## Media embedding
+
+This site also supports rich media. Here's a sleek audio player component:
+
+<AudioPlayer
+  client:load
+  src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  title="SoundHelix — Song 1"
+  artist="Demo Track"
+/>
+
+And here's the video player:
+
+<VideoPlayer
+  client:load
+  src="https://www.w3schools.com/html/mov_bbb.mp4"
+  caption="Big Buck Bunny — a sample video for testing the player component."
+/>
 
 ## Next steps
 
