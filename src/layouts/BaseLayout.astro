@@ -7,9 +7,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  coverImageUrl?: string;
+  coverImageWidth?: number;
+  coverImageHeight?: number;
 }
 
-const { title, description } = Astro.props;
+const { title, description, coverImageUrl, coverImageWidth, coverImageHeight } = Astro.props;
+const baseUrl = Astro.site || Astro.url?.origin;
 ---
 
 <!doctype html>
@@ -22,6 +26,21 @@ const { title, description } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+
+    <!-- Open Graph / Social share -->
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="article" />
+    {coverImageUrl && baseUrl && (
+      <>
+        <meta property="og:image" content={new URL(coverImageUrl, baseUrl).href} />
+        {coverImageWidth && <meta property="og:image:width" content={String(coverImageWidth)} />}
+        {coverImageHeight && <meta property="og:image:height" content={String(coverImageHeight)} />}
+        <meta property="og:image:type" content="image/png" />
+      </>
+    )}
+    <meta name="twitter:card" content={coverImageUrl ? "summary_large_image" : "summary"} />
+
     <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
