@@ -1,7 +1,7 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SocialIcons from '../components/SocialIcons.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -10,9 +10,13 @@ interface Props {
   coverImageUrl?: string;
   coverImageWidth?: number;
   coverImageHeight?: number;
+  showSocialSidebar?: boolean;
+  hideFooter?: boolean;
+  fullScreen?: boolean;
+  mainClass?: string;
 }
 
-const { title, description, coverImageUrl, coverImageWidth, coverImageHeight } = Astro.props;
+const { title, description, coverImageUrl, coverImageWidth, coverImageHeight, showSocialSidebar, hideFooter, fullScreen, mainClass = '' } = Astro.props;
 const baseUrl = Astro.site || Astro.url?.origin;
 ---
 
@@ -41,13 +45,19 @@ const baseUrl = Astro.site || Astro.url?.origin;
     )}
     <meta name="twitter:card" content={coverImageUrl ? "summary_large_image" : "summary"} />
 
-    <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class={`${fullScreen ? 'h-screen overflow-hidden' : 'min-h-screen'} flex flex-col`}>
     <Header />
-    <main class="flex-1 max-w-3xl mx-auto px-6 py-12 w-full">
+    {
+      showSocialSidebar && (
+        <div class="hidden lg:flex fixed flex-col gap-8 z-10" style="left: max(0.5rem, calc((100vw - 48rem) / 2 - 7rem)); top: 40%; transform: translateY(-50%);">
+          <SocialIcons layout="vertical" />
+        </div>
+      )
+    }
+    <main class={`flex-1 max-w-3xl mx-auto px-6 py-12 w-full ${mainClass}`}>
       <slot />
     </main>
-    <Footer />
+    {!hideFooter && <Footer />}
   </body>
 </html>

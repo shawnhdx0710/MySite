@@ -19,8 +19,8 @@ let coverImageUrl, coverImageWidth, coverImageHeight;
 if (post.data.coverImage) {
   const resolved = await getImage({ src: post.data.coverImage });
   coverImageUrl = resolved.src;
-  coverImageWidth = resolved.width;
-  coverImageHeight = resolved.height;
+  coverImageWidth = resolved.attributes.width;
+  coverImageHeight = resolved.attributes.height;
 }
 ---
 
@@ -30,6 +30,7 @@ if (post.data.coverImage) {
   coverImageUrl={coverImageUrl}
   coverImageWidth={coverImageWidth}
   coverImageHeight={coverImageHeight}
+  showSocialSidebar={true}
 >
   <article>
     <a

@@ -1,25 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialIcons from '../components/SocialIcons.astro';
+import MosaicBackground from '../components/MosaicBackground.astro';
 ---
 
 <BaseLayout
   title="Shawn Han"
   description="CMU stats & ML + CS student. Personal portfolio and sports analytics blog."
+  hideFooter={true}
+  fullScreen={true}
+  mainClass="!py-0 flex items-center relative"
 >
-  <div class="py-16 md:py-24">
-    <h1 class="font-serif text-5xl md:text-6xl font-semibold tracking-tight leading-tight text-ink">
-      Stats, sports,<br />and the stories<br />between the lines.
+  <!-- Mosaic background: upper 50vh, full-width, z-[1], hidden on mobile -->
+  <div class="hidden md:block absolute z-[1] w-[100vw] left-1/2 -translate-x-1/2 top-0 h-[50vh] overflow-hidden">
+    <MosaicBackground />
+    <!-- bottom gradient overlay at z-[2] -->
+    <div class="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none z-[2]" style="background: linear-gradient(to bottom, transparent 0%, #faf9f7 90%);" />
+  </div>
+
+  <!-- Foreground content: transparent, z-10 -->
+  <div class="relative z-10 w-full mt-40">
+    <h1 class="font-serif text-5xl md:text-6xl tracking-tight leading-tight text-white font-bold" style="text-shadow: 0 2px 12px rgba(0,0,0,0.5);">
+      ALL IN THE GAME.
     </h1>
-    <p class="mt-6 text-lg text-soft-ink leading-relaxed max-w-lg">
-      I'm Shawn Han — a CMU stats &amp; ML + CS student exploring the
-      intersection of data science and sports analytics.
+    <p class="mt-52 text-lg text-soft-ink leading-relaxed max-w-lg">
+      I'm Shawn Dexuan Han, a student exploring the intersection of statistics, data science, and sports analytics.
     </p>
     <div class="flex gap-3 mt-8">
       <a
         href="/blog"
         class="inline-flex items-center px-5 py-2.5 rounded-full bg-ink text-white text-sm font-medium hover:opacity-85 transition-opacity"
       >
-        Read the blog
+        Blogs
       </a>
       <a
         href="/projects"
@@ -27,6 +39,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       >
         Projects
       </a>
+    </div>
+    <div class="mt-16 flex justify-center">
+      <SocialIcons layout="horizontal" />
     </div>
   </div>
 </BaseLayout>
